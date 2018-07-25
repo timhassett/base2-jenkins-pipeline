@@ -5,8 +5,9 @@ pipeline {
             steps {
                 echo 'Building docker image...'
                 //sh 'docker build -t timhassett/my-node-app ./docker/'
+                
                 script {
-                    docker.build("docker/")    
+                    docker.build("timhassett/my-node-app", "./docker/")    
                 }
             }
         }
