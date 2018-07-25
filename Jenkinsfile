@@ -1,12 +1,11 @@
 pipeline {
     agent any
-    def app
     stages {
         stage('Build Docker Image') {
           steps {
             echo 'Building docker image...'
             //sh 'docker build -t timhassett/my-node-app ./docker/'
-            app = docker.build("docker/")
+            docker.build("docker/")
           }
         }
         stage('Test Docker Image') {
@@ -16,7 +15,7 @@ pipeline {
                 //sh 'docker run -d -p 8080:3000 timhassett/my-node-app'
                 //sh 'curl localhost:8080'
                 //sh 'docker rm $(docker ps -aq) -f'
-                app.withRun('-p 8080:3000') {
+                docker.image('timhassett/my-node-app').app.withRun('-p 8080:3000') {
                     sh 'node --version'
                     sh 'curl localhost:3000'
                 }
