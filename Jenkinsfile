@@ -25,9 +25,10 @@ pipeline {
                 }
             }
         }
-        stage('Publish Docker Image')
+        stage('Publish Docker Image') {
             steps {
                 echo 'Publishing docker image...'
             }
+        }
     }
 }
