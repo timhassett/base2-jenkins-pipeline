@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'docker run -d -p 8080:3000 timhassett/my-node-app'
                 sh 'curl localhost:8080'
-                sh 'docker rm ${docker ps -aq)'
+                sh 'docker rm $(docker ps -aq)'
             }
         }
     }
