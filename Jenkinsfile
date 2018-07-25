@@ -1,21 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Build Docker Image') {
           steps {
-            echo 'Building...'
-            echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            sh 'docker build -t timhassett/my-node-app ./docker/'
           }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-            }
-        }
+
     }
 }
